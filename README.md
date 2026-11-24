@@ -1,6 +1,6 @@
 # DevOps Lab 4: Advanced Deployment Strategies & Enterprise DevOps
 
-**Student:** Meenakshi | **Roll No.:** 2301730200 | **Email:** meenakship0805@gmail.com
+**Student:** Srishti Kainth | **Roll No.:** 2301730175 | **Email:** srishtikainth2@gmail.com
 **Course:** DevOps and Automation (ENSP461)
 **Environment:** Ubuntu 24.04 LTS, Docker, Minikube (2 nodes), kubectl, Helm, Jenkins, GitHub Actions, Argo CD, HashiCorp Vault, PostgreSQL
 

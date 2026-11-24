@@ -1,0 +1,25 @@
+# Local stack: app + PostgreSQL. Also used by the integration tests.
+# The password comes from your shell, never from this file:
+#   export DB_PASSWORD=$(openssl rand -hex 16)
+#   docker compose up -d --build
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: lab4
+      POSTGRES_USER: lab4
+      POSTGRES_PASSWORD: ${DB_PASSWORD:?set DB_PASSWORD first}
+    ports: ["5432:5432"]
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U lab4 -d lab4"]
+      interval: 3s
+      retries: 20
+
+  app:
+    build: { context: app, args: { APP_VERSION: v1 } }
+    environment:
+      DB_HOST: db
+      DB_PASSWORD: ${DB_PASSWORD}
+    ports: ["8000:5000"]
+    depends_on:
+      db: { condition: service_healthy }
